@@ -1,23 +1,22 @@
-# 🐞 Bug Report Tool – Spring Boot + MySQL + Docker
+# 🖥️ Bug Report Frontend – React
 
-A simple bug tracking API built with **Spring Boot**, **MySQL**, and **Docker**.
+A simple React frontend for reporting and viewing bugs using the Spring Boot API.
 
 ---
 
 ## 📦 Features
 
-- REST API to report and view bugs
-- MySQL database integration
-- Dockerized setup for easy deployment
-- DevTools-enabled for fast development
+- Form to submit new bug reports
+- Bug list display fetched from backend API
+- Axios-based communication with backend
+- Easy to configure API URL
 
 ---
 
 ## 🛠 Requirements
 
-- Java 17+
-- Maven
-- Docker & Docker Compose
+- Node.js (v16+ recommended)
+- npm or yarn
 
 ---
 
@@ -26,34 +25,16 @@ A simple bug tracking API built with **Spring Boot**, **MySQL**, and **Docker**.
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/bug-report-tool.git
-cd bug-report-tool
+git clone https://github.com/yourusername/bug-report-frontend.git
+cd bug-report-frontend
 ```
-### 2. Build the Spring Boot JAR
+### 2. Install Dependencies
 
 ```bash
-./mvnw clean package -DskipTests
-
-If you are on Windows, use mvnw.cmd instead of ./mvnw.
+npm install
 ```
-### 3. Start the Application with Docker
+# 3. Run the App
 
 ```bash
-docker-compose up --build
+npm run dev
 ```
-
-## ⚙️ Configuration
-
-The application is preconfigured for Docker-based MySQL:
-
-```properties
-spring.datasource.url=jdbc:mysql://mysql-db:3306/bugdb
-spring.datasource.username=root
-spring.datasource.password=yourpassword
-spring.jpa.hibernate.ddl-auto=update
-spring.jpa.show-sql=true
-```
-
-
-
-
