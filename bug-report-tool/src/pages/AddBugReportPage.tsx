@@ -9,6 +9,11 @@ import axios from "axios";
 //     reporterEmail: string;
 // };
 
+interface ApiErrors {
+    [key: string]: string[];
+}
+
+
 
 const AddBugReportPage: React.FC = () => {
     const navigate = useNavigate();
@@ -19,6 +24,7 @@ const AddBugReportPage: React.FC = () => {
     const [description, setDescription] = useState<string>("");
     const [priority, setPriority] = useState<string>("");
     const [reporterEmail, setReporterEmail] = useState<string>("");
+    const [errors, setErrors] = useState<ApiErrors>({})
 
     const handleSubmit = async() =>
     {
@@ -42,7 +48,7 @@ const AddBugReportPage: React.FC = () => {
 
                 }
             }).catch(error => {
-               console.log(error);
+               setErrors(error.response.data.errors);
             })
 
     };
@@ -70,6 +76,7 @@ const AddBugReportPage: React.FC = () => {
                             className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                             placeholder="Issue title"
                         />
+                        <span className="text-xs text-red-500">{errors.title}</span>
                     </div>
 
                     <div>
@@ -85,6 +92,7 @@ const AddBugReportPage: React.FC = () => {
                             className="w-full resize-none border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                             placeholder="Describe the issue in detail..."
                         />
+                        <span className="text-xs text-red-500">{errors.description}</span>
                     </div>
 
                     <div>
@@ -116,6 +124,7 @@ const AddBugReportPage: React.FC = () => {
                             className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                             placeholder="e.g. user@example.com"
                         />
+                        <span className="text-xs text-red-500">{errors.reporterEmail}</span>
                     </div>
 
                     <button
