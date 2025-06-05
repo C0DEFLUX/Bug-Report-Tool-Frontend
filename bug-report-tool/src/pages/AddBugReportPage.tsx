@@ -2,13 +2,6 @@ import React, { useState } from "react";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
 
-// type BugForm = {
-//     title: string;
-//     description: string;
-//     priority: "LOW" | "MEDIUM" | "HIGH";
-//     reporterEmail: string;
-// };
-
 interface ApiErrors {
     [key: string]: string[];
 }
